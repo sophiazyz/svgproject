@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="260" viewBox="0 0 500 260">
+  <!-- 背景矩形 -->
+  <rect x="0" y="0" width="500" height="260" fill="#FFFFFF"/>
+  <!-- 大矩形（在底部） -->
+  <rect x="40" y="30" width="180" height="120" fill="#FFCDD2" stroke="#B71C1C" stroke-width="2" />
+  <!-- 半透明圆，覆盖在矩形上 -->
+  <circle cx="180" cy="90" r="70" fill="#BBDEFB" opacity="0.6" stroke="#0D47A1" stroke-width="2"/>
+  <!-- 小圆在上层 -->
+  <circle cx="330" cy="80" r="40" fill="#C8E6C9" stroke="#1B5E20" stroke-width="2"/>
+  <!-- 多条交叉线用于测试相交点 -->
+  <line x1="20" y1="220" x2="480" y2="50" stroke="#333" stroke-width="1.5"/>
+  <line x1="20" y1="50" x2="480" y2="220" stroke="#666" stroke-width="1.5"/>
+</svg>

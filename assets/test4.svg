@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="240" viewBox="0 0 420 240">
+  <!-- 矩形：只有描边 -->
+  <rect x="20" y="20" width="150" height="100" fill="none" stroke="#9C27B0" stroke-width="6" stroke-linejoin="round"/>
+  <!-- 填充圆：只有填充 -->
+  <circle cx="300" cy="70" r="50" fill="#FFC107" stroke="none"/>
+  <!-- 带圆形端点的粗线段 -->
+  <line x1="20" y1="200" x2="400" y2="200" stroke="#000" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 10"/>
+</svg>

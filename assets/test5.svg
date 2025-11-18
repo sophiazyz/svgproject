@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <!-- 背景网格仅作参考 -->
+  <rect x="0" y="0" width="600" height="300" fill="#FAFAFA"/>
+  <!-- 左侧矩形（相对布局） -->
+  <rect x="30" y="30" width="200" height="120" fill="#AED581" stroke="#558B2F" stroke-width="2"/>
+  <!-- 中央圆（居中） -->
+  <circle cx="350" cy="120" r="70" fill="#81D4FA" stroke="#0288D1" stroke-width="2"/>
+  <!-- 对角线 -->
+  <line x1="0" y1="300" x2="600" y2="0" stroke="#9E9E9E" stroke-width="2"/>
+</svg>
