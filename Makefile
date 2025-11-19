@@ -7,15 +7,14 @@ SRCS = src/main.c src/svg_parse.c src/svg_render.c src/bmp_writer.c src/jpg_writ
 # 可执行文件
 TARGET = svg_processor
 
-# JPEG 库
-JPEG_LIBS = -ljpeg
+LIBS = -lm -ljpeg
 
 # 默认目标
 all: $(TARGET)
 
 # 链接生成可执行文件
 $(TARGET): $(SRCS)
-	$(CC) $(SRCS) -o $(TARGET) $(PKG_CFLAGS) $(PKG_LIBS) $(JPEG_LIBS)
+	$(CC) $(SRCS) -o $(TARGET) $(PKG_CFLAGS) $(PKG_LIBS) $(LIBS)
 
 # 清理生成的文件
 clean:
