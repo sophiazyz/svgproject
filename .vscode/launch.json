@@ -8,7 +8,7 @@
             "name": "Debug SVG Editor",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/svg_editor.exe",
+            "program": "${workspaceFolder}/svg_processor",
             "args": [
                 "--parse",
                 "${workspaceFolder}/assets/test.svg"

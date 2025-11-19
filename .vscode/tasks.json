@@ -11,8 +11,10 @@
                 "${workspaceFolder}/src/svg_parse.c",
                 "${workspaceFolder}/src/svg_render.c",
                 "${workspaceFolder}/src/bmp_writer.c",
+                "${workspaceFolder}/src/jpg_writer.c",
+                "${workspaceFolder}/src/image.c",
                 "-o",
-                "${workspaceFolder}\\svg_editor.exe"
+                "${workspaceFolder}\\svg_processor.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
