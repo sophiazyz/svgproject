@@ -4,7 +4,6 @@
 #include <ctype.h>
 
 
-#include "../include/svg_render_bmp.h"
 #include "../include/svg_parser.h"
 
 //-------- Utility function: Read the complete label --------//
