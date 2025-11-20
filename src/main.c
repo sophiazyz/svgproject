@@ -7,16 +7,20 @@
 #include "../include/svg_render.h"
 #include "../include/jpg_writer.h"
 #include "../include/image.h"
+#include "../include/bmp_writer.h"
 
 
 /********************* Usage *********************/
 void print_usage()
 {
     printf("Usage:\n");
-    printf("  ./svg_editor --export_jpg input.svg output.jpg\n");
-    printf("  ./svg_editor -ej input.svg output.jpg\n");
-    printf("  ./svg_editor --parser input.svg\n");
-    printf("  ./svg_editor -p input.svg\n");
+    printf("  ./svg_processor --parser input.svg\n");
+    printf("  ./svg_processor -p input.svg\n");
+    printf("  ./svg_processor --export_bmp input.svg output.bmp\n");
+    printf("  ./svg_processor -eb input.svg output.bmp\n");
+    printf("  ./svg_processor --export_jpg input.svg output.jpg\n");
+    printf("  ./svg_processor -ej input.svg output.jpg\n");
+    
 }
 
 /********************* Main *********************/
@@ -28,18 +32,18 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    if (strcmp(argv[1], "--export_jpg") == 0 || strcmp(argv[1], "-ej") == 0)
+    char *input_file = NULL;
+    char *output_file = NULL;
+    int export_jpg = 0;
+    int export_bmp = 0;
+
+    if (strcmp(argv[1], "--export_jpg") == 0 || strcmp(argv[1], "-ej") == 0 || strcmp(argv[1], "--export_bmp") == 0 || strcmp(argv[1], "-eb") == 0)
     {
         if (argc != 4)
         {
             print_usage();
             return 1;
         }
-
-        char *input_file = NULL;
-        char *output_file = NULL;
-        int export_jpg = 0;
-        int export_bmp = 0;
 
         // 解析命令行参数
         for (int i = 1; i < argc; i++)
@@ -64,14 +68,14 @@ int main(int argc, char *argv[])
 
         if (!input_file || !output_file)
         {
-            printf("错误: 需要指定输入和输出文件\n");
+            printf("error: missing input or output file\n");
             print_usage();
             return 1;
         }
 
         if (!export_jpg && !export_bmp)
         {
-            printf("错误: 需要指定输出格式\n");
+            printf("error: missing output format\n");
             print_usage();
             return 1;
         }
@@ -96,7 +100,11 @@ int main(int argc, char *argv[])
             write_jpg(output_file, img, 90);
             printf("已生成JPG文件: %s\n", output_file);
         }
-        
+        else if (export_bmp)
+        {
+            write_bmp(output_file, img);
+            printf("已生成BMP文件: %s\n", output_file);
+        }
 
         // 清理内存
         free(shapes);

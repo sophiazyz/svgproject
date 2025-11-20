@@ -8,7 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${workspaceFolder}/src/main.c",
-                "${workspaceFolder}/src/svg_parse.c",
+                "${workspaceFolder}/src/svg_parser.c",
                 "${workspaceFolder}/src/svg_render.c",
                 "${workspaceFolder}/src/bmp_writer.c",
                 "${workspaceFolder}/src/jpg_writer.c",

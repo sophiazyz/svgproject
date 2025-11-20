@@ -2,7 +2,7 @@
 CC = gcc
 
 # 源文件和目标文件
-SRCS = src/main.c src/svg_parse.c src/svg_render.c src/bmp_writer.c src/jpg_writer.c src/image.c
+SRCS = src/main.c src/svg_parser.c src/svg_render.c src/bmp_writer.c src/jpg_writer.c src/image.c 
 
 # 可执行文件
 TARGET = svg_processor

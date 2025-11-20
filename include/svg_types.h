@@ -42,7 +42,8 @@ typedef struct SvgShape
 typedef struct
 {
     double width, height; // SVG canvas size
-    SvgShape *shapes;     // head of shape list
+    SvgShape *shapes;   // head of shape list
+    int shape_count;    // number of shapes
 } SvgDocument;
 
 #endif

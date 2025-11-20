@@ -3,6 +3,13 @@
 
 #include "image.h"
 
+#include <stdint.h>
+
+// Color conversion utilities
+uint32_t hex_color_to_rgb(unsigned int hex_color);
+void rgb_to_components(uint32_t rgb, uint8_t *r, uint8_t *g, uint8_t *b);
+
+
 // 变换矩阵结构
 typedef struct {
     float a, b, c, d, e, f;
@@ -48,7 +55,7 @@ typedef struct {
     SVGGroup *group;  // 所属分组
 } SVGShape;
 
-RGBColor parse_color(const char *color_str);
+
 int parse_svg(const char *filename, SVGShape **shapes, int *shape_count);
 
 Matrix matrix_identity();
