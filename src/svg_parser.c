@@ -3,10 +3,11 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "../include/svg_types.h"
+
+#include "../include/svg_render_bmp.h"
 #include "../include/svg_parser.h"
 
-//-------- 工具函数：读取完整标签 --------//
+//-------- Utility function: Read the complete label --------//
 static void read_full_tag(FILE *fp, const char *first_line, char *out_tag)
 {
     strcpy(out_tag, first_line);
@@ -18,14 +19,15 @@ static void read_full_tag(FILE *fp, const char *first_line, char *out_tag)
     }
 }
 
-//-------- 工具函数：跳过空白 --------//
+//-------- Utility function: Skip whitespace --------//
 static void skip_spaces(const char **p)
 {
     while (isspace((unsigned char)**p))
         (*p)++;
 }
 
-//-------- 工具函数：解析属性值，如  width="800" --------//
+//-------- Utility function: Parse attribute value, e.g., width="800" --------//
+
 static int parse_attr_double(const char *tag, const char *name, double *out)
 {
     char *pos = strstr(tag, name);
@@ -35,7 +37,8 @@ static int parse_attr_double(const char *tag, const char *name, double *out)
     if (!pos) return 0;
 
     pos++;
-    if (*pos != '\"') return 0;
+
+    if (*pos != '\"') return 0; // find opening quote "
     pos++;
 
     *out = atof(pos);
@@ -57,11 +60,12 @@ static int parse_attr_color(const char *tag, const char *name, unsigned int *out
     if (*pos != '#') return 0;
     pos++;
 
-    *out = (unsigned int)strtoul(pos, NULL, 16);
+    *out = (unsigned int)strtoul(pos, NULL, 16); // convert into hexadecimal
     return 1;
 }
 
-//-------- 新建 shape --------//
+//-------- Create a new shape --------//
+
 static SvgShape *new_shape(SvgShapeType type)
 {
     SvgShape *s = (SvgShape *)malloc(sizeof(SvgShape));
@@ -73,7 +77,7 @@ static SvgShape *new_shape(SvgShapeType type)
     return s;
 }
 
-//-------- 主解析函数 --------//
+//-------- Main parsing function --------//
 int svg_load_from_file(const char *filename, SvgDocument **doc_out)
 {
     FILE *fp = fopen(filename, "r");
@@ -90,13 +94,13 @@ int svg_load_from_file(const char *filename, SvgDocument **doc_out)
 
     while (fgets(line, sizeof(line), fp))
     {
-        // 去掉前后空白
+        // Remove leading and trailing whitespace
         const char *p = line;
         skip_spaces(&p);
 
         char tag[4096];
 
-        //---- 解析 <svg> ----//
+        //---- Parse <svg> ----//
         if (strncmp(p, "<svg", 4) == 0)
         {
             read_full_tag(fp, p, tag);
@@ -105,7 +109,7 @@ int svg_load_from_file(const char *filename, SvgDocument **doc_out)
             parse_attr_double(tag, "height", &doc->height);
         }
 
-        //---- 解析 <circle> ----//
+        //---- Parse <circle> ----//
         else if (strncmp(p, "<circle", 7) == 0)
         {
             read_full_tag(fp, p, tag);
@@ -122,7 +126,7 @@ int svg_load_from_file(const char *filename, SvgDocument **doc_out)
             doc->shapes = s;
         }
 
-        //---- 解析 <rect> ----//
+        //---- Parse <rect> ----//
         else if (strncmp(p, "<rect", 5) == 0)
         {
             read_full_tag(fp, p, tag);
@@ -139,7 +143,7 @@ int svg_load_from_file(const char *filename, SvgDocument **doc_out)
             doc->shapes = s;
         }
 
-        //---- 解析 <line> ----//
+        //---- Parse <line> ----//
         else if (strncmp(p, "<line", 5) == 0)
         {
             read_full_tag(fp, p, tag);
@@ -162,7 +166,7 @@ int svg_load_from_file(const char *filename, SvgDocument **doc_out)
     return 0;
 }
 
-//-------- 打印svg内容 --------//
+//-------- Print SVG content --------//
 void svg_print_document(const SvgDocument *doc)
 {
     if (!doc) {
@@ -173,7 +177,7 @@ void svg_print_document(const SvgDocument *doc)
     printf("SVG Document: width=%.2f, height=%.2f\n",
            doc->width, doc->height);
 
-    // 统计数量
+    // Count shapes numbers
     int count = 0;
     const SvgShape *s = doc->shapes;
     while (s) {
@@ -220,7 +224,7 @@ void svg_print_document(const SvgDocument *doc)
     }
 }
 
-//-------- 释放文档 --------//
+//-------- Free document --------//
 void svg_free_document(SvgDocument *doc)
 {
     if (!doc) return;
