@@ -233,19 +233,11 @@ void add_circle(SvgDocument* doc, double cx, double cy, double r, const char* fi
     SvgShape* shape = &doc->shapes[doc->shape_count];
     shape->type = SVG_SHAPE_CIRCLE;
     shape->id = doc->shape_count + 1;
-    //test
-    printf("Adding circle with ID %d\n", shape->id);
-    printf("%d\n",doc->shape_count);
-    //
     shape->data.circle.cx = cx;
     shape->data.circle.cy = cy;
     shape->data.circle.r = r;
     gui_parse_color(fill, shape->data.circle.fill);
     doc->shape_count++;
-    //test
-    printf("Adding circle with ID %d\n", shape->id);
-    printf("%d\n",doc->shape_count);
-    //
     printf("Circle added with ID %d\n", shape->id);
 }
 

@@ -12,7 +12,7 @@ svg_processor: src/main_cmd.c src/svg_parser.c src/svg_render.c src/bmp_writer.c
 	@echo "命令行版本构建完成: ./svg_processor"
 
 # GUI版本 - 生成 ./svg_gui
-svg_gui: src/main_gui.c src/gui_render.c src/svg_editor.c
+svg_gui: src/svg_editor.c
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 	@echo "GUI版本构建完成: ./svg_gui"
 

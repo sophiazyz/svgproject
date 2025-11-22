@@ -176,9 +176,9 @@ int parse_transform(const char *transform_str, Transform **transforms, int *tran
         return 0;
     }
     
-    char *str = strdup(transform_str);
+    char *str = strdup(transform_str); // 复制字符串以便修改
     char *saveptr;
-    const char *token = strtok_r(str, ")", &saveptr);
+    const char *token = strtok_r(str, ")", &saveptr); // 以 ')' 分割
     
     int capacity = 5;
     *transforms = malloc(capacity * sizeof(Transform));
