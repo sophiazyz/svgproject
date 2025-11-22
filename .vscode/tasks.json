@@ -13,6 +13,10 @@
                 "${workspaceFolder}/src/bmp_writer.c",
                 "${workspaceFolder}/src/jpg_writer.c",
                 "${workspaceFolder}/src/image.c",
+                "${workspaceFolder}/src/gui_commands.c",
+                "${workspaceFolder}/src/main_gui.c",
+                "${workspaceFolder}/src/svg_editor.c",
+                "${workspaceFolder}/src/gui_render.c",
                 "-o",
                 "${workspaceFolder}\\svg_processor.exe"
             ],
