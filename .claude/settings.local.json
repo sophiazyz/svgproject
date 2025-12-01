@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make:*)",
+      "Bash(./svg_gui:*)",
+      "Bash(gcc:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
